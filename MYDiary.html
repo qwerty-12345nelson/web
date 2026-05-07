@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CollegeDiary - Nelson JR Tabuloc</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #091413 0%, #1a2a2e 100%);
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 10%;
+      background: rgba(9, 20, 19, 0.95);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(98, 55, 167, 0.3);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      background: linear-gradient(45deg, #6237a7, #ff00aa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    nav a {
+      margin-left: 30px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: #ff00aa;
+      transform: translateY(-2px);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: linear-gradient(45deg, #ff00aa, #6237a7);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100vh;
+      padding: 0 10%;
+      padding-top: 100px;
+    }
+
+    .hero-text {
+      max-width: 600px;
+      text-align: left;
+      animation: slideInLeft 1s ease-out;
+    }
+
+    .hero-text h2 {
+      color: #ff00aa;
+      font-weight: 400;
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .hero-text h1 {
+      font-size: 72px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero-text h1 span {
+      color: #B0E4CC;
+      text-shadow: 0 0 20px rgba(176, 228, 204, 0.5);
+      background: linear-gradient(45deg, #B0E4CC, #ff00aa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-buttons {
+      margin-top: 40px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .btn {
+      padding: 15px 30px;
+      border: none;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: linear-gradient(45deg, #ff00aa, #6237a7);
+      color: white;
+      box-shadow: 0 10px 30px rgba(255, 0, 170, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(255, 0, 170, 0.6);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #ff00aa;
+    }
+
+    .hero-image {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero-image img {
+      width: 450px;
+      height: 450px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 20px 60px rgba(98, 55, 167, 0.4);
+      border: 5px solid rgba(255, 0, 170, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .hero-image img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 30px 80px rgba(98, 55, 167, 0.6);
+      border-color: #ff00aa;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Sections */
+    section {
+      padding: 100px 10%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    section h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 60px;
+      background: linear-gradient(45deg, #ff00aa, #6237a7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 36px;
+      font-weight: 600;
+      margin: 40px 0 30px;
+      color: #B0E4CC;
+      position: relative;
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(45deg, #ff00aa, #6237a7);
+      border-radius: 2px;
+    }
+
+    section h3 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #ff00aa;
+      margin: 30px 0 15px;
+    }
+
+    /* Diary Section Styles */
+    #diary {
+      background: rgba(26, 42, 46, 0.5);
+      border-radius: 20px;
+      margin: 50px 0;
+      padding: 80px;
+    }
+
+    .diary-entry {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 30px;
+      border-radius: 15px;
+      margin: 30px 0;
+      border-left: 4px solid #ff00aa;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .diary-entry:hover {
+      transform: translateX(10px);
+      box-shadow: 0 10px 30px rgba(255, 0, 170, 0.2);
+      border-left-color: #B0E4CC;
+    }
+
+    .diary-semester {
+      background: linear-gradient(135deg, rgba(98, 55, 167, 0.2), rgba(255, 0, 170, 0.2));
+      padding: 20px;
+      border-radius: 10px;
+      margin: 40px 0;
+      border: 1px solid rgba(255, 0, 170, 0.3);
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #ff00aa, transparent);
+      margin: 60px 0;
+    }
+
+    /* About */
+    #about {
+      background: rgba(26, 42, 46, 0.5);
+      border-radius: 20px;
+      margin: 50px 0;
+      padding: 80px;
+      text-align: center;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin: 40px 0;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 48px;
+      font-weight: 700;
+      background: linear-gradient(45deg, #ff00aa, #B0E4CC);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 18px;
+      color: #ccc;
+      margin-top: 10px;
+    }
+
+    /* Gallery */
+    #gallery {
+      text-align: center;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      border: 3px solid rgba(255, 0, 170, 0.2);
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 20px 50px rgba(98, 55, 167, 0.5);
+      border-color: #ff00aa;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      color: white;
+      padding: 30px 20px 20px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+
+    /* Skills */
+    #ano {
+      background: linear-gradient(135deg, rgba(98, 55, 167, 0.1), rgba(255, 0, 170, 0.1));
+      border-radius: 20px;
+      text-align: center;
+      padding: 80px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .skill-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 0, 170, 0.1);
+      border-color: #ff00aa;
+    }
+
+    .skill-icon {
+      font-size: 48px;
+      background: linear-gradient(45deg, #ff00aa, #6237a7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 15px;
+    }
+
+    /* Contact */
+    #contact {
+      text-align: center;
+      background: rgba(9, 20, 19, 0.8);
+      border-radius: 20px;
+      padding: 80px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #ff00aa;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 600;
+      padding: 15px 25px;
+      border-radius: 50px;
+      border: 2px solid rgba(255, 0, 170, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .contact-link:hover {
+      color: #B0E4CC;
+      background: rgba(255, 0, 170, 0.1);
+      border-color: #ff00aa;
+      transform: translateY(-3px);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+      z-index: 2001;
+    }
+
+    /* Scroll Top */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(45deg, #ff00aa, #6237a7);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      font-size: 20px;
+      display: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 20px rgba(98, 55, 167, 0.4);
+      z-index: 1000;
+    }
+
+    .scroll-top:hover {
+      transform: scale(1.1);
+    }
+
+    @media(max-width: 900px) {
+      header {
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      nav a {
+        margin: 0;
+      }
+
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 150px;
+      }
+
+      .hero-text h1 {
+        font-size: 48px;
+      }
+
+      .hero-image img {
+        width: 300px;
+        height: 300px;
+      }
+
+      section {
+        padding: 60px 5%;
+      }
+
+      section h1 {
+        font-size: 36px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .stats {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .diary-entry {
+        padding: 20px;
+        margin: 20px 0;
+      }
+    }
+  </style>
+</head>
+
+
+  <header>
+    <div class="logo" onclick="scrollToSection('hero')">College<span>Diary</span></div>
+    <nav>
+      <a href="#hero" onclick="scrollToSection('hero')"><i class="fas fa-home"></i> Home</a>
+      <a href="#about" onclick="scrollToSection('about')"><i class="fas fa-user"></i> About</a>
+      <a href="#diary" onclick="scrollToSection('diary')"><i class="fas fa-book"></i> Diary</a>
+      <a href="#gallery" onclick="scrollToSection('gallery')"><i class="fas fa-images"></i> Gallery</a>
+      <a href="#ano" onclick="scrollToSection('ano')"><i class="fas fa-star"></i> Skills</a>
+      <a href="#contact" onclick="scrollToSection('contact')"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+  </header>
+
+  <section id="hero" class="hero">
+    <div class="hero-text">
+      <h2>Hello, I'm</h2>
+      <h1>
+        Nelson <span>JR</span><br>
+        <span>Tabuloc</span>
+      </h1>
+      <p>INFORMATION TECHNOLOGY STUDENT</p>
+      <div class="hero-buttons">
+        <a href="#diary" class="btn btn-primary" onclick="scrollToSection('diary')">Read My Diary</a>
+        <a href="#contact" class="btn btn-secondary" onclick="scrollToSection('contact')">Contact ME</a>
+      </div>
+    </div>
+      <img src="c:\Users\Nelson Tabuloc\Downloads\me.png" alt="">
+  </section>
+
+  <section id="about">
+    <h1>About Nelson</h1>
+    <p><strong> This is Nelson Tabuloc</strong> - a driven BSIT Student passionate about Business, Trading, and Technology. 
+       Always learning, coding, and creating amazing things! </p>
+    
+    <div class="stats">
+      <div class="stat-item">
+        <span class="stat-number" data-target="2">0</span>
+        <div class="stat-label">Years in College</div>
+      </div>
+      
+      <div class="stat-item">
+        <span class="stat-number" data-target="1">0</span>
+        <div class="stat-label">One Dream</div>
+      </div>
+    </div>
+    <p><strong> Course:</strong> Bachelor of Science in Information Technology (BSIT)</p>
+    <p><strong> Personal Goal:</strong> Become A billionaire</p>
+    <p><strong> Motto:</strong> "You're doubting yourself, while others are scared of your potential"</p>
+  </section>
+
+  <!-- NEW DIARY SECTION - Your complete diary integrated! -->
+  <section id="diary">
+    <h1>My College Diary</h1>
+    <p style="font-size: 20px; text-align: center; margin-bottom: 40px; color: #ccc;">
+       New Season of my life
+    </p>
+
+    <div class="diary-semester">
+      <h2>1st Year - 1st Semester</h2>
+      
+      <div class="diary-entry">
+        <h3>First Day of College</h3>
+        <p>honestly my first course is bachelor of marine engineering but i really dont want it so i change <strong>INFORMATION TECHNOLOGY</strong></p>
+      </div>
+
+      <div class="diary-entry">
+        <h3>Educ Week (Quiz Bee Event)</h3>
+        <p>Team "BS I QUIT" in quiz bee. under pressure but exciting. Placed 6th but learned teamwork. Shawarat to my team Villareal, Budol, Dela Cruz, </p>
+      </div>
+
+      <div class="diary-entry">
+        <h3>Pre-Lim</h3>
+        <p>First adult Exam, and shalala i made it so</strong></p>
+      </div>
+
+      <div class="diary-entry">
+        <h3>Midterm</h3>
+        <p>stress month, tired, pressured. but still i have, <strong>Consistency > motivation! </strong></p>
+      </div>
+
+      <div class="diary-entry">
+        <h3>Finals Week</h3>
+        <p>Here Section 1 6 is discharged and i'm happy that become one of them <strong>Survived! </strong></p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="diary-semester">
+      <h2>1st Year - 2nd Semester</h2>
+      
+      <div class="diary-entry">
+        <h3>Pre-Lim</h3>
+        <p>section 1 6 is separated, and i'm only separated from all my brother.<strong> Im upset</strong></p>
+      </div>
+
+      <div class="diary-entry">
+        <h3>Midterm</h3>
+        <p>Made more friends, circle growing. Studying easier with study buddies.</p>
+      </div>
+
+      <div class="diary-entry">
+        <h3>Finals + IT Week</h3>
+        <p><strong>Tired but Happy</strong> Most exciting event. Made memories forever!</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="diary-semester">
+      <h2>2nd Year - New Section</h2>
+      <p>Second year = new chapter. New classmates, serious subjects. Had to level up! </p>
+    </div>
+
+    <div class="diary-semester">
+      <h2>2nd Year - 1st Semester</h2>
+      
+      <div class="diary-entry">
+        <h3>Pre-Lim</h3>
+        <p>Advanced lessons, real pressure. Studied more, focused more. <strong>Time to focus.</strong></p>
+      </div>
+
+      <div class="diary-entry">
+        <h3>Midterm</h3>
+        <p>Friends made stress lighter. Laughter + support = survival mode! </p>
+      </div>
+
+      <div class="diary-entry">
+        <h3>Finals + IT Week Again</h3>
+        <p>Heavy academics but IT Week gave energy. <strong>Events make college WORTH IT! </strong></p>
+      </div>
+
+    <hr>
+
+    <div class="diary-semester">
+      <h2>2nd Year - 2nd Semester</h2>
+      
+      <div class="diary-entry">
+        <h3>Pre-Lim</h3>
+        <p>keep pushing my self to focus <strong>Never give up! you have a dreams </strong></p>
+      </div>
+
+      <div class="diary-entry">
+        <h3>Midterm</h3>
+        <p>Heavy but learned stress management. Not every semester perfect. </p>
+      </div>
+
+      <div class="diary-entry">
+        <h3>Finals Week</h3>
+        <p>Survived tough year! <strong>Success = not quitting! </strong></p>
+      </div>
+
+      <div class="diary-entry">
+        <h3>Gratitude</h3>
+        <p>Thankful for friends who supported me, and believe me. Mabuhay kayong lahat ng masaya at gawin ang gusto. <strong>Without me, they not enjoy the college life</strong></p>
+      </div>
+
+      <div class="diary-entry">
+        <h3>Closing Thoughts</h3>
+        <p>College = stress + victories + friendships. IT student life worth every struggle. <strong>Still here, still moving forward! </strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h1> College Memories</h1>
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openModal('quizbee.jpg', 'Quiz Beh')">
+        <img src="c:\Users\Nelson Tabuloc\Downloads\quizbee.jpg" alt="College Photo 1">
+        <div class="gallery-overlay">
+          <div class="gallery-title">One Six</div>
+          <div>Quiz BEE guy</div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" onclick="openModal('NSTP.jpg', 'Nstp Boys')">
+        <img src="c:\Users\Nelson Tabuloc\Downloads\NSTP.jpg" alt="College Photo 2">
+        <div class="gallery-overlay">
+          <div class="gallery-title">Nstp</div>
+          <div>Cleaning the whole baranggay</div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" onclick="openModal('ffe43428-c84a-47d2-afcd-8cf122acc0a5.jfif', 'Group ')">
+        <img src="c:\Users\Nelson Tabuloc\Downloads\ffe43428-c84a-47d2-afcd-8cf122acc0a5.jfif" alt="College Photo 3">
+        <div class="gallery-overlay">
+          <div class="gallery-title">Me and my dad</div>
+          <div>My one and only Dad</div>
+        </div>
+      </div>
+      
+      <div class="gallery-item" onclick="openModal('ilog.jpg', 'Ilog')">
+        <img src="c:\Users\Nelson Tabuloc\Downloads\ilog.jpg" alt="College Photo 4">
+        <div class="gallery-overlay">
+          <div class="gallery-title">.....</div>
+          <div>......</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ano">
+    <h1>Skills</h1>
+    <p style="font-size: 24px; font-style: italic; color: #B0E4CC; margin-bottom: 20px;">
+      "....." 
+    </p>
+    
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon"><i class="fas fa-users"></i></div>
+        <h3>Teamwork</h3>
+        <p>Collaborating with teams to achieve common goals</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="fas fa-lightbulb"></i></div>
+        <h3>Problem-Solving</h3>
+        <p>Breaking down hard problems into actionable solutions</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="fas fa-rocket"></i></div>
+        <h3>Adaptability</h3>
+        <p>Quickly learning new technologies and adapting to change</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Trading Mindset</h3>
+        <p>Analytical thinking for business and investment decisions</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me!</h2>
+    <p>just want to say hi? I'm here! </p>
+    
+    <div class="contact-links">
+      <a href="mailto:tabulocn@gmail.com" class="contact-link">
+        <i class="fas fa-envelope"></i> tabulocn@gmail.com
+      </a>
+      <a href="https://www.facebook.com/NELSONTABULOC07200627" target="_blank" class="contact-link">
+        <i class="fab fa-facebook"></i> Facebook
+      </a>
+    </div>
+  </section>
+
+  <!-- Gallery Modal -->
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <span class="close-modal" onclick="closeModal()">&times;</span>
+    <img id="modalImage" class="modal-content" src="">
+    <div id="modalCaption" style="text-align: center; padding: 20px; font-size: 18px; color: white;"></div>
+  </div>
+
+  <script>
+    // Smooth scrolling
+    function scrollToSection(sectionId) {
+      document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Gallery Modal
+    function openModal(imageSrc, caption) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      const modalCaption = document.getElementById('modalCaption');
+      
+      modal.style.display = 'flex';
+      modalImg.src = imageSrc;
+      modalCaption.textContent = caption;
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').style.display = 'none';
+    }
+
+    // Scroll Top
+    window.onscroll = function() {
+      const scrollTopBtn = document.getElementById('scrollTop');
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        scrollTopBtn.style.display = 'block';
+      } else {
+        scrollTopBtn.style.display = 'none';
+      }
+    };
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Animated counters
+    function animateCounters() {
+      const counters = document.querySelectorAll('.stat-number');
+      counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const increment = target / 100;
+        let current = 0;
+        
+        const updateCounter = () => {
+          if (current < target) {
+            current += increment;
+            counter.textContent = Math.ceil(current);
+            setTimeout(updateCounter, 20);
+          } else {
+            counter.textContent = target;
+          }
+        };
+        updateCounter();
+      });
+    }
+
+    // Trigger counters when about section is visible
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+
+    observer.observe(document.getElementById('about'));
+
+    // Navbar active link
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('nav a');
+      
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= (sectionTop - 200)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>h
